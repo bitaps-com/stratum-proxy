@@ -1,0 +1,9 @@
+#!/bin/sh
+parentdir="$(dirname "$(pwd)")"
+docker container stop stratum-proxy
+docker container rm stratum-proxy
+docker run --rm \
+           --name stratum-proxy \
+           -v $(pwd):/app/ \
+           --net=host \
+           -it stratum-proxy
